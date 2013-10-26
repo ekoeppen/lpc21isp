@@ -1667,8 +1667,6 @@ void ResetTarget(ISP_ENVIRONMENT *IspEnvironment, TARGET_MODE mode)
         case PROGRAM_MODE:
             ControlModemLines(IspEnvironment, 1, 1);
             Sleep(100);
-            ClearSerialPortBuffers(IspEnvironment);
-            Sleep(100);
             ControlModemLines(IspEnvironment, 0, 1);
             //Longer delay is the Reset signal is conected to an external rest controller
             Sleep(500);
@@ -1683,8 +1681,6 @@ void ResetTarget(ISP_ENVIRONMENT *IspEnvironment, TARGET_MODE mode)
         /* Reset and start uploaded program                     */
         case RUN_MODE:
             ControlModemLines(IspEnvironment, 1, 0);
-            Sleep(100);
-            ClearSerialPortBuffers(IspEnvironment);
             Sleep(100);
             ControlModemLines(IspEnvironment, 0, 0);
             Sleep(100);
